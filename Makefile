@@ -14,7 +14,6 @@ endif
 build1:
 	$(GCC) $(CFLAGS) print_integer.c test_print_integer.c -o main.exe
 
-clean: 
 	rm -f $(EXEC) 
 	rm -f *.o
 	rm -f *.exe
@@ -23,3 +22,6 @@ clean:
 
 execute:
 	./$(EXEC).exe > actual.txt
+
+diff: 
+	diff actual.txt expected.txt
