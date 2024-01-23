@@ -1,7 +1,7 @@
 # TARGETS
 DEBUG = 1
-EXEC = main
-GCC=gcc
+EXEC = test_print_integer
+GCC = gcc
 CFLAGS=-std=c99 -Wall -Wshadow --pedantic -Wvla -Werror
 
 ifeq ($(DEBUG), 1)
@@ -12,8 +12,9 @@ endif
 
 
 build1:
-	$(GCC) $(CFLAGS) print_integer.c test_print_integer.c -o main.exe
+	$(GCC) $(CFLAGS) print_integer.c test_print_integer.c -o test_print_integer
 
+clean: 
 	rm -f $(EXEC) 
 	rm -f *.o
 	rm -f *.exe
@@ -25,3 +26,6 @@ execute:
 
 diff: 
 	diff actual.txt expected.txt
+
+gdb:
+	gdb test_print_integer
